@@ -1,18 +1,96 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>User Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f7fc;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 400px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        label {
+            font-size: 16px;
+            margin-bottom: 8px;
+            color: #555;
+        }
+
+        input[type="text"], input[type="email"] {
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+
+        input[type="text"]:focus, input[type="email"]:focus {
+            border-color: #4CAF50;
+            outline: none;
+        }
+
+        button {
+            padding: 12px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        .error {
+            color: red;
+            font-size: 14px;
+        }
+    </style>
 </head>
 <body>
-<h1>Enter User Details</h1>
-<form th:action="@{/submit-form}" th:object="${user}" method="post">
-    <label for="name">Name:</label>
-    <input type="text" th:field="*{name}" id="name" />
 
-    <label for="email">Email:</label>
-    <input type="email" th:field="*{email}" id="email" />
+<div class="container">
+    <h1>Enter User Details</h1>
 
-    <button type="submit">Submit</button>
-</form>
+    <form th:action="@{/submit-form}" th:object="${user}" method="post">
+        <label for="name">Name:</label>
+        <input type="text" th:field="*{name}" id="name" placeholder="Enter your name" required />
+
+        <label for="email">Email:</label>
+        <input type="email" th:field="*{email}" id="email" placeholder="Enter your email" required />
+
+        <button type="submit">Submit</button>
+    </form>
+</div>
+
 </body>
 </html>
